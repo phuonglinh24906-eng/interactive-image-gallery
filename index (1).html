@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Image Gallery</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 30px;
+        }
+
+        #image {
+            width: 500px;
+            height: 300px;
+            border: 2px solid #333;
+            background-color: #eee;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin: 0 auto 20px;
+            font-size: 20px;
+        }
+
+        .gallery img {
+            width: 150px;
+            height: 100px;
+            object-fit: cover;
+            margin: 5px;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .gallery img:hover {
+            border-color: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Interactive Image Gallery</h1>
+
+    <div id="image">
+        Hover over an image below to display here.
+    </div>
+
+    <div class="gallery">
+        <img
+            src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=500&q=80"
+            alt="Beautiful mountain landscape"
+            onmouseover="upDate(this)"
+            onmouseout="unDo()"
+        >
+
+        <img
+            src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=500&q=80"
+            alt="Beautiful beach"
+            onmouseover="upDate(this)"
+            onmouseout="unDo()"
+        >
+
+        <img
+            src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=500&q=80"
+            alt="Green forest"
+            onmouseover="upDate(this)"
+            onmouseout="unDo()"
+        >
+    </div>
+
+    <script>
+        function upDate(element) {
+            console.log("upDate function is working");
+            console.log(element.alt);
+            console.log(element.src);
+
+            var image = document.getElementById("image");
+
+            image.innerHTML = element.alt;
+            image.style.backgroundImage = "url('" + element.src + "')";
+        }
+
+        function unDo() {
+            var image = document.getElementById("image");
+
+            image.innerHTML =
+                "Hover over an image below to display here.";
+
+            image.style.backgroundImage = "url('')";
+        }
+    </script>
+
+</body>
+</html>
